@@ -5,6 +5,44 @@ from scipy.stats import ortho_group
 # Return a random orthogonal matrix, drawn from the O(N) Haar distribution (the only uniform distribution on O(N)).'''
 
 
+class ls_loss:
+    def __init__(self, A, b_t, xstar, d):
+        self.A = A
+        self.b = b_t
+        self.xstar = xstar
+        self.d = d
+
+    def evaluate(self, x):
+        A = self.A
+        b_t = self.b
+        return 0.5 * linalg.norm(A * x - b_t) ** 2
+
+    def gradient(self, x):
+        A = self.A
+        b_t = self.b
+        return A.T @ (A @ x - b_t)
+
+    def tracking_error(self, x):
+        return linalg.norm(x - self.xstar)
+
+    def regret(self, x):
+        return self.evaluate(x) - self.evaluate(self.xstar)
+
+
+def generate_ls_seq(n, d, xstar_gen, iters = 500):
+    #  generate list containing sequence of loss objects
+    # ball xstar_gen = xstar2(d)
+
+    losses = []
+    A = generate_A(n, d)
+    b_gen = generate_bt(A, n, xstar_gen)  #generator for b
+
+    for i in range(iters):
+        b_t, xstar_t = next(b_gen)
+        losses.append(ls_loss(A, b_t, xstar_t, d))
+    return losses
+
+
 def generate_A(n, d):
     U = ortho_group.rvs(n)
     V = ortho_group.rvs(d)
@@ -22,7 +60,7 @@ def generate_bt(A, n, x_gen):
 
 
 def xstar1(sigma, d):
-    '''generator for x_t^* for q1'''
+    '''generator for x_t^* for unconstrained'''
     x = np.zeros(d)
     while True:
         yield x
@@ -30,7 +68,7 @@ def xstar1(sigma, d):
 
 
 def xstar2(d):
-    '''generator for x_t^* for question 2'''
+    '''generator for x_t^* for unit ball'''
     x = np.zeros(d)
     while True:
         yield x
