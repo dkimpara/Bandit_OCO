@@ -1,104 +1,28 @@
-\begin{thebibliography}{13}
+\begin{thebibliography}{3}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
 
-\bibitem[Aaronson et~al.(2005)Aaronson, Kuperberg, and Granade]{zoo}
-Scott Aaronson, Greg Kuperberg, and Christopher Granade.
-\newblock The complexity zoo, 2005.
+\bibitem[Agarwal et~al.(2010)Agarwal, Dekel, and Xiao]{agarwal2010optimal}
+Alekh Agarwal, Ofer Dekel, and Lin Xiao.
+\newblock Optimal algorithms for online convex optimization with multi-point
+  bandit feedback.
+\newblock In \emph{COLT}, pages 28--40. Citeseer, 2010.
 
-\bibitem[Bartholdi et~al.(1989)Bartholdi, Tovey, and Trick]{bartholdiVoting}
-J.~Bartholdi, C.~A. Tovey, and M.~A. Trick.
-\newblock Voting schemes for which it can be difficult to tell who won the
-  election.
-\newblock \emph{Social Choice and Welfare}, 6\penalty0 (2):\penalty0 157--165,
-  1989.
-\newblock ISSN 01761714, 1432217X.
-\newblock URL \url{http://www.jstor.org/stable/41105913}.
+\bibitem[Flaxman et~al.(2004)Flaxman, Kalai, and McMahan]{flaxman2004online}
+Abraham~D Flaxman, Adam~Tauman Kalai, and H~Brendan McMahan.
+\newblock Online convex optimization in the bandit setting: gradient descent
+  without a gradient.
+\newblock \emph{arXiv preprint cs/0408007}, 2004.
 
-\bibitem[Brandt et~al.(2016)Brandt, Conitzer, Endriss, Lang, and
-  Procaccia]{handbookcss}
-Felix Brandt, Vincent Conitzer, Ulle Endriss, J{\'e}r{\^o}me Lang, and Ariel~D
-  Procaccia.
-\newblock \emph{Handbook of computational social choice}.
-\newblock Cambridge University Press, 2016.
-
-\bibitem[Condorcet and de~Caritat(1785)]{condorcet1785essay}
-Marquis~de Condorcet and MJAN de~Caritat.
-\newblock An essay on the application of analysis to the probability of
-  decisions rendered by a plurality of votes.
-\newblock \emph{Classics of social choice}, pages 91--112, 1785.
-
-\bibitem[Hemachandra(1987)]{hem87}
-L.~A. Hemachandra.
-\newblock The strong exponential hierarchy collapses.
-\newblock In \emph{Proceedings of the Nineteenth Annual ACM Symposium on Theory
-  of Computing}, STOC ’87, page 110–122, New York, NY, USA, 1987.
-  Association for Computing Machinery.
-\newblock ISBN 0897912217.
-\newblock \doi{10.1145/28395.28408}.
-\newblock URL \url{https://doi.org/10.1145/28395.28408}.
-
-\bibitem[Hemaspaandra et~al.(1999)Hemaspaandra, Hemaspaandra, and
-  Rothe]{exactdodgson}
-Edith Hemaspaandra, Lane~A. Hemaspaandra, and J{\"{o}}rg Rothe.
-\newblock Exact analysis of dodgson elections: Lewis carroll's 1876 voting
-  system is complete for parallel access to {NP}.
-\newblock \emph{CoRR}, cs.CC/9907036, 1999.
-\newblock URL \url{https://arxiv.org/abs/cs/9907036}.
-
-\bibitem[Hemaspaandra and Williams(2012)]{heuristic2012}
-Lane~A. Hemaspaandra and Ryan Williams.
-\newblock An atypical survey of typical-case heuristic algorithms.
-\newblock \emph{CoRR}, abs/1210.8099, 2012.
-\newblock URL \url{http://arxiv.org/abs/1210.8099}.
-
-\bibitem[Homan and Hemaspaandra(2005)]{heuristic}
-Christopher~M. Homan and Lane~A. Hemaspaandra.
-\newblock Guarantees for the success frequency of an algorithm for finding
-  dodgson-election winners.
-\newblock \emph{CoRR}, abs/cs/0509061, 2005.
-\newblock URL \url{http://arxiv.org/abs/cs/0509061}.
-
-\bibitem[{K\"obler, Johannes} et~al.(1987){K\"obler, Johannes}, {Sch\"oning,
-  Uwe}, and {Wagner, Klaus W.}]{ksw87}
-{K\"obler, Johannes}, {Sch\"oning, Uwe}, and {Wagner, Klaus W.}
-\newblock The difference and truth-table hierarchies for np.
-\newblock \emph{RAIRO-Theor. Inf. Appl.}, 21\penalty0 (4):\penalty0 419--435,
-  1987.
-\newblock \doi{10.1051/ita/1987210404191}.
-\newblock URL \url{https://doi.org/10.1051/ita/1987210404191}.
-
-\bibitem[Lukasiewicz and Malizia(2016)]{csatintro}
-Thomas Lukasiewicz and Enrico Malizia.
-\newblock On the complexity of mcp-nets.
-\newblock In \emph{Proceedings of the Thirtieth AAAI Conference on Artificial
-  Intelligence}, AAAI’16, page 558–564. AAAI Press, 2016.
-
-\bibitem[Lukasiewicz and Malizia(2017)]{compsat}
-Thomas Lukasiewicz and Enrico Malizia.
-\newblock A novel characterization of the complexity class thetakp based on
-  counting and comparison.
-\newblock \emph{Theoretical Computer Science}, 694:\penalty0 21 -- 33, 2017.
-\newblock ISSN 0304-3975.
-\newblock \doi{https://doi.org/10.1016/j.tcs.2017.06.023}.
-\newblock URL
-  \url{http://www.sciencedirect.com/science/article/pii/S0304397517305352}.
-
-\bibitem[Papadimitriou and Zachos(1982)]{PZ83}
-Christos~H. Papadimitriou and Stathis~K. Zachos.
-\newblock Two remarks on the power of counting.
-\newblock In Armin~B. Cremers and Hans-Peter Kriegel, editors,
-  \emph{Theoretical Computer Science}, pages 269--275, Berlin, Heidelberg,
-  1982. Springer Berlin Heidelberg.
-\newblock ISBN 978-3-540-39421-1.
-
-\bibitem[Wagner(1990)]{wag90}
-Klaus~W Wagner.
-\newblock Bounded query classes.
-\newblock \emph{SIAM Journal on Computing}, 19\penalty0 (5):\penalty0 833--846,
-  1990.
+\bibitem[Mokhtari et~al.(2016)Mokhtari, Shahrampour, Jadbabaie, and
+  Ribeiro]{mokhtari2016online}
+Aryan Mokhtari, Shahin Shahrampour, Ali Jadbabaie, and Alejandro Ribeiro.
+\newblock Online optimization in dynamic environments: Improved regret rates
+  for strongly convex problems.
+\newblock In \emph{2016 IEEE 55th Conference on Decision and Control (CDC)},
+  pages 7195--7201. IEEE, 2016.
 
 \end{thebibliography}

@@ -1,8 +1,26 @@
 \section{Introduction}\label{sec:intro}
-\begin{defn}
-	Regret:
+
+Online convex optimization (OCO) is an area of great interest with wide ranging applications in machine learning and controls. In general, the goal of OCO is to minimize a stream of convex loss functions without prior information about the function. This can also be viewed as a game between the algorithm (player) and the environment (adversary). The algorithm chooses an action $x_t \in \K \subseteq \mathbb{R}^d$ and the environment gives a loss $\lt : \K \rightarrow \mathbb{R}$. 
+
+The algorithm may have several different levels of access to the loss function, corresponding to different problem settings. The most typical setting is that the algorithm has access to gradient information. However, here we focus on the Bandit setting where the algorithm only has access to the functional evaluation(s) of the action(s) that the algorithm plays.
+
+We measure the performance of various algorithms with regret. However, here in contrast to the majority of the work on Bandit OCO, we focus on dynamic or time-varying regret:
+
+$$\sumt \lt(x_t) -  \sumt \min_{\xst\in \K}\ell_t(\xst).$$
+
+In the Bandit setting, the algorithm cannot compete against a completely adaptive adversary who chooses the loss function $\lt$ after observing the action $x_t$ \cite{agarwal2010optimal}. Hence for this setting, we will show an algorithm that is no-regret against an adaptive adversary that can only observe information of the $t-1$ rounds preceding round $t$.
+
+Overall in the literature we observe a large gap between between the optimal regret bounds between the full information and bandit settings. In particular, in the full information there are algorithms that are no-regret against a completely adaptive adversary. This raises the question of studying a range of problem between bandit (single function evaluation) and full information extremes. We thus begin with studying a generic $k$-point bandit feedback setting. Then we show that for $k=d+1$-point feedback, there is a deterministic algorithm that is no-regret against a completely adaptive adversary, therefore matching the full-information bound. 
+
+For this $k$-point feedback setting, we define the expected regret:
+
+\begin{defn}{$k$-point Bandit Regret}
 	$$\E \frac{1}{k} \sumt \sumk \lt(y_{t,i}) - \E \sumt \min_{\xst\in \K}\ell_t(\xst)$$
+	
+	where the expectation is taken over the randomness of the player.
 \end{defn}
+
+As is typical in Bandit OCO, the algorithm relies on Online Gradient Descent (OGD) which uses a gradient estimator $\tildegt$. Thus the regret bounds are based on the regret bounds of OGD. Here we draw extensively from \citet{agarwal2010optimal} which studies our problem but with static regret and \citet{mokhtari2016online} that gives dynamic regret bounds for OGD.
 
 
 

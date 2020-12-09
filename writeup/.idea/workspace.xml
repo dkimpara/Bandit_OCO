@@ -20,18 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1b103780-fc7e-4491-840a-2150d6e18f58" name="Default Changelist" comment="commt">
-      <change afterPath="$PROJECT_DIR$/alg.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/experimentCode.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alg-theory.tex" beforeDir="false" afterPath="$PROJECT_DIR$/alg-theory.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bib.bib" beforeDir="false" afterPath="$PROJECT_DIR$/bib.bib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment.tex" beforeDir="false" afterPath="$PROJECT_DIR$/experiment.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/intro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/intro.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/main.aux" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/main.bbl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/main.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.pdfsync" beforeDir="false" afterPath="$PROJECT_DIR$/main.pdfsync" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/main.synctex.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pfLem.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pfLem.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prelims.tex" beforeDir="false" afterPath="$PROJECT_DIR$/prelims.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/theory.tex" beforeDir="false" afterPath="$PROJECT_DIR$/theory.tex" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +85,7 @@
       <workItem from="1596837975057" duration="3214000" />
       <workItem from="1597084527627" duration="1195000" />
       <workItem from="1597167084599" duration="7335000" />
+      <workItem from="1607536227735" duration="719000" />
     </task>
     <task id="LOCAL-00001" summary="preflight commit">
       <created>1596114899845</created>

@@ -4,33 +4,35 @@
 
 First we formally introduce the problem. Our objective is:
 
-$$\min_{x_t \in \mathcal{K}} \ell_t(x_t)$$
+\[\min_{x_t \in \mathcal{K}} \ell_t(x_t)\]
 
-over rounds $t=1,...T$. Where $\K \subset \mathbb{R}^d$ is our action set and $\ell_t$ are adversarially chosen time varying loss functions. The key in our setting is that we do not have first order gradient information $\glt$ but we are able to get zeroth-order (bandit) feedback with $k=d+1$ points. First we outline our assumptions. 
+over rounds $t=1,\dots, T$. Where $\K \subset \mathbb{R}^d$ is our action set and $\ell_t$ are adversarially chosen time varying loss functions. The key in our setting is that we do not have first order gradient information $\glt$ but we are able to get zeroth-order (bandit) feedback with $k=d+1$ points. First we outline our assumptions.
 
 We assume that $\K$ is compact and has a nonempty interior (otherwise project $\K$ to a lower dimensional space). For this work, when we implicitly or explicitly refer to norms, we will be using the euclidean norm. We also have the following assumptions for each loss function $\lt$:
 
 \begin{assumption}
 	Let $\mathcal{B}$ denote the unit ball centered at the origin. There exists $r,D > 0 $ such that
-	$$r \mathcal{B} \subseteq \K \subseteq D \mathcal{B}$$
-\end{assumption}
-
-\begin{assumption}
-	The gradient of $\ell_t$ over $\K$ is bounded:
-	$$\norm{\nabla \ell_t(x)} \leq G ~~ \forall t, \forall x \in \K$$ 
-	
-	Equivalently, $\ell_t$ is $G$-Lipschitz
+	\[r \mathcal{B} \subseteq \K \subseteq D \mathcal{B}\]
 \end{assumption}
 
 \begin{assumption}
 	Strong Convexity. For $\mu \geq 0$, $\ell_t$ is $\mu$-strongly convex over the set $\K$:
-	$$\ell_t(x) \geq \lt(y) + \nabla \lt(y)^\intercal(x-y) + \frac{\mu}{2} \norm{x-y}^2, ~~ \forall x,y \in \K$$
+	\[\ell_t(x) \geq \lt(y) + \nabla \lt(y)^\intercal(x-y) + \frac{\mu}{2} \norm{x-y}^2, ~~ \forall x,y \in \K\]
 \end{assumption}
 
 \begin{assumption}
 	$\lt$ is $L$-smooth on $\K$ if it is differentiable on an open set containing $\K$ and its gradient is Lipschitz continuous with constant $L$:
-	$$\norm{\glt(x)-\glt(y)} \leq L \norm{x-y}, ~~ \forall x,y \in \K$$.
+	\[\norm{\glt(x)-\glt(y)} \leq L \norm{x-y}, ~~ \forall x,y \in \K\].
 \end{assumption}
+
+
+\begin{assumption}
+	The gradient of $\ell_t$ over $\K$ is bounded:
+	\[\norm{\nabla \ell_t(x)} \leq G ~~ \forall t, \forall x \in \K\]
+	
+	Equivalently, $\ell_t$ is $G$-Lipschitz
+\end{assumption}
+
 
 We also use the notation $\E_t$ to denote the conditional expectation conditioned on all randomness in the first $t-1$ rounds. 
 

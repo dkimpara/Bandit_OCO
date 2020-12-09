@@ -1,0 +1,14 @@
+\begin{algorithm} 
+	\begin{algorithmic}
+		\caption{Generic $k$-point Bandit Online Gradient Descent }\label{alg:generic}
+		\State \textbf{Input:} Step size $\eta$, exploration parameter $\delta$ and shrinkage coefficient $\xi$.
+		\State Set $x_1 = 0$
+	
+		\For{$t = 1, ..., T$} 
+			\State Observe randomized queries around $x_t$: $\lt(y_{t,1}), \dots, \lt(y_{t,k})$ 
+			\State Estimate the gradient $\tildegt = g(\lt(y_{t,1}), \dots, \lt(y_{t,k}))$.
+			\State Update $x_{t+1} = \proj[(1-\xi)\K]{(x_t - \eta \tilde{g}_t)}$.
+		\EndFor
+
+	\end{algorithmic}
+\end{algorithm}
