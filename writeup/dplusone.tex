@@ -14,34 +14,43 @@ Where $e_i$'s are the standard unit basis vectors. We further need only the assu
 	&= dG.
 \end{align*}
 
-Where the second inequality is by the Lipschitz property.
+Where the second inequality is by the Lipschitz property. We can also derive the divergence of the estimator:
 
-\dk{todo}
-And also the divergence of the estimator and the true gradient
 \begin{align*}
-\norm{\tildegt - \glt(x_t)} &= \sqrt{\frac{1}{\delta} \sum_{i=1}^{d} |(\lt(x_t + \delta e_i)-\lt(x_t))e_i - \langle \glt(x_t), e_i \rangle|^2} \\
-& \leq %%use lipschitz \\
-& \leq  \\
-&= \frac{\sqrt{d} L \delta}{2}
+	\norm{\tildegt - \glt(x_t)} &= \sqrt{|\frac{1}{\delta} \sum_{i=1}^{d} (\lt(x_t + \delta e_i)-\lt(x_t))e_i - \langle \glt(x_t), e_i \rangle|^2} \\
+	& \leq \sqrt{\frac{d}{\delta} \max_i\{|(\lt(x_t + \delta e_i)-\lt(x_t))e_i - \langle \glt(x_t), e_i \rangle|^2\}} 
 \end{align*}
+
+By the smoothness assumption, we have for all $i$
+
+$$\lt(x_t + \delta e_i) \leq \lt(x_t) + \delta \langle \glt(x_t), e_i \rangle + \frac{L\delta^2}{2}.$$
+
+And by convexity we have $\lt(x_t + \delta e_i) \geq \lt(x_t) + \delta \langle \glt(x_t), e_i \rangle$. Hence 
+
+$$|\frac{1}{\delta}(\lt(x_t + \delta e_i)-\lt(x_t))e_i - \langle \glt(x_t), e_i \rangle|^2 \leq \frac{L^2\delta^2}{4}.$$
+
+So we conclude that 
+
+$$\norm{\tildegt - \glt(x_t)} \leq \frac{\sqrt{d}L\delta}{2}$$
+
 
 Hence we have that the properties of $\tildegt$ are the deterministic version of the properties of the estimator outline in theorem \ref{thm:one}. Hence we have an algorithm that can guarantee no-regret against a completely adaptive adversary. 
 
 
 \begin{theorem} \label{thm:dplusone}
-	Suppose a completely adaptive adversary chooses the sequence of loss functions $\{\lt\}_{t=1}^T$ subject to the same assumptions as above. If Algorithm \ref{alg} is run with the $1/\eta \geq L$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$, then
+	Suppose a completely adaptive adversary chooses the sequence of loss functions $\{\lt\}_{t=1}^T$ subject to the same assumptions as above. If Algorithm \ref{alg} is run with the $\eta \leq \frac{1}{2dG}$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$, then
 	
 	$$\sumt \frac{1}{d+1} (\lt(x_t) + \sum_{i=1}^{d}\lt(x_t+\delta e_i)) - \sumt \lt(\xst) \leq
-	Regret_T^d(OGD) + G \log(T) \big(1 + \frac{\sqrt{d} L \delta}{2}
+	Regret_T^d(OGD, dG) + G \log(T) \big(1 + \frac{\sqrt{d} L \delta}{2}
 	+ \frac{D}{r}\big).$$
 \end{theorem}
 
 \begin{proof}
-This is a modification of the proof of Theorem \ref{thm:one}. Define $h_t(x) = \lt(x) + (\tildegt - \glt(x))^\intercal x$. Then $\norm{\nabla h_t(x_t)} \leq dG$. Hence from Lemma \ref{lem:OGD} for any sequence $\{\xst\}_{t=1}^T$,
+This is a modification of the proof of Theorem \ref{thm:one}. Define $h_t(x) = \lt(x) + (\tildegt - \glt(x))^\intercal x$. Then since $\norm{\nabla h_t(x_t)} \leq dG$. Hence from Lemma \ref{lem:OGD} for any sequence $\{\xst\}_{t=1}^T$,
 
-$$\sumt h_t(x_t) - h_t(\xst) \leq Regret_T^d.$$
+$$\sumt h_t(x_t) - h_t(\xst) \leq Regret_T^d(OGD, dG).$$
 
-Then we use $\norm{\tildegt - \glt(x_t)} \leq \frac{\sqrt{d} L \delta}{2}$. Apply Lemma \ref{lem:2} and plug in our parameters and this gives us the result.
+Then we proceed as in the proof of Theorem \ref{thm:one}, use $\norm{\tildegt - \glt(x_t)} \leq \frac{\sqrt{d} L \delta}{2}$. Apply Lemma \ref{lem:2} and plug in our parameters and this gives us the result.
 
 \end{proof}
 
