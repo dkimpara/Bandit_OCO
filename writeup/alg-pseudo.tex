@@ -1,65 +1,14 @@
-\begin{algorithm}
+\begin{algorithm} 
 	\begin{algorithmic}
-		\caption{\gscore$(\dtriple)$} \label{alg:gscore}
-		\State \textbf{Input:} A Dodgson triple $\dtriple$.
-		\State
-		\For{$d \in C \setminus \{c\}$} \Comment Initialize counter variables
-			\State $Deficit[d] \leftarrow 0$ \Comment Number of votes by which $c < d$ ($d$ beats $c$)
-			\State $Swaps[d] \leftarrow 0$ \Comment Number of votes by which $c \prec d$ (greedily swappable votes against $d$)
+		\caption{Gradient descent with deterministic estimator based on $d+1$ points}\label{alg}
+		\State \textbf{Input:} Step size $\eta$, exploration parameter $\delta$ and shrinkage coefficient $\xi$.
+		\State Set $x_1 = 0$
+	
+		\For{$t = 1, ..., T$} 
+			\State Observe $\lt(x_t)$, $\lt(x_t + \delta e_i)$ for $i=1,...,d$. 
+			\State Set $\tildegt = \frac{1}{\delta} \sum_{i=1}^{d} (\lt(x_t + \delta e_i)-\lt(x_t))e_i$.
+			\State Update $x_{t+1} = \proj[(1-\xi)\K]{(x_t - \eta \tilde{g}_t)}$.
 		\EndFor
 
-		\For{each vote $v \in V$} \Comment each vote is an 
-		array where $v[k] \prec v[k+1]$
-			\State $i \leftarrow 1$
-				\While{$v[i] \neq c$}
-					\State $d \leftarrow v[i]$
-					\State $Deficit[d] \leftarrow Deficit[d]-1$
-					\State $i \leftarrow i+1$
-				\EndWhile
-				\If{$ i < length(v)$}
-					\State $d \leftarrow v[i+1]$
-					\State $Swaps[d] \leftarrow Swaps[d]+1$
-				\EndIf
-				\For{$i \leftarrow i + 1$ to $length(v)$ }
-					\State $d \leftarrow v[i]$
-					\State $Deficit[d] \leftarrow Deficit[d]+1$
-
-
-				\EndFor
-		\EndFor
-		\State $confidence \leftarrow$ ``definitely''
-		\State $score \leftarrow 0$
-		\For{$d \in C \setminus \{c\}$} \Comment If there are more than $1+Deficit[d]/2$ greedily swappable votes,
-			\If{$Deficit[d]\geq 0$} \Comment then this is the Dodgson Score of $c$.
-				\State $score \leftarrow score +
-				\floor{Deficit[d]/2} + 1$ 
-				\If{$Deficit[d] \geq 2 \cdot Swaps[d]$}
-					\State $confidence \leftarrow$ ``maybe''
-					\State $score \leftarrow score + 1$
-				\EndIf
-			\EndIf
-		\EndFor
-		\State \textbf{Output:} $(score,~confidence)$
 	\end{algorithmic}
-\end{algorithm}
-\begin{algorithm}
-\begin{algorithmic}
-	\caption{\gwin$(\dtriple)$} \label{alg:gwin}
-	\State \textbf{Input:} A Dodgson triple $\dtriple$ where
-	we want to test whether $c$ is a Dodgson winner in the
-	election.
-	\State $(cscore,~confidence) \leftarrow \gscore(\dtriple)$
-	\State $winner \leftarrow $ ``yes''
-	\For{$d \in C \setminus\{c\}$}
-		\State $(dscore,~confidence) \leftarrow
-		\gscore(\langle C,d,V \rangle)$
-		\If{$dscore < cscore$}
-			\State $winner \leftarrow$ ``no''
-		\If{$dcon = $ ``maybe''}
-			\State $confidence \leftarrow$ ``maybe''
-		\EndIf
-		\EndIf
-	\EndFor
-	\State \textbf{Output:} $(winner,~confidence)$
-\end{algorithmic}
 \end{algorithm}

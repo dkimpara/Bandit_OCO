@@ -1,0 +1,44 @@
+\input{alg-pseudo.tex}
+\section{$d+1$ point feedback}
+In this section, we show that we can construct a deterministic gradient estimator using $d+1$ point feedback. Thus we obtain a deterministic version of Theorem \ref{thm:one}. Hence, the algorithm is no-regret even against completely adaptive adversaries meaning that the adversary can choose the loss $\lt$ after the algorithm plays $x_t$. Hence we match the full-information bound.
+
+The algorithm constructs the deterministic gradient estimator
+$$\tildegt = \frac{1}{\delta} \sum_{i=1}^{d} (\lt(x_t + \delta e_i)-\lt(x_t))e_i.$$
+
+Where $e_i$'s are the standard unit basis vectors. We further need only the assumptions on strong convexity and $L$-smoothness, since they imply a bound on the gradient which we denote $G$. We can thus derive a bound on the norm of the estimator
+
+\begin{align*}
+	\norm{\tildegt} &= \norm{\frac{1}{\delta} \sum_{i=1}^{d} (\lt(x_t + \delta e_i)-\lt(x_t))e_i} \\
+	& \leq \frac{d}{\delta} \max_i \norm{\lt(x_t + \delta e_i)-\lt(x_t)} \\
+	& \leq \frac{d}{\delta} \delta G \\
+	&= dG.
+\end{align*}
+
+And also the divergence of the estimator and the true gradient
+\begin{align*}
+\norm{\tildegt - \glt(x_t)} &= \sqrt{\frac{1}{\delta} \sum_{i=1}^{d} |(\lt(x_t + \delta e_i)-\lt(x_t))e_i - \langle \glt(x_t), e_i \rangle|^2} \\
+& \leq %%use lipschitz \\
+& \leq  \\
+&= \frac{\sqrt{d} L \delta}{2}
+\end{align*}
+
+Hence we have that the properties of $\tildegt$ are the deterministic version of the properties of the estimator outline in theorem \ref{thm:one}. Hence we have an algorithm that can guarantee no-regret against a completely adaptive adversary. 
+
+
+\begin{theorem} \label{thm:dplusone}
+	Suppose a completely adaptive adversary chooses the sequence of loss functions $\{\lt\}_{t=1}^T$ subject to the same assumptions as above. If Algorithm \ref{alg} is run with the $1/\eta \geq L$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$, then
+	
+	$$\sumt \frac{1}{d+1} (\lt(x_t) + \sum_{i=1}^{d}\lt(x_t+\delta e_i)) - \sumt \lt(\xst) \leq
+	Regret_T^d(OGD) + G \log(T) \big(1 + \frac{\sqrt{d} L \delta}{2}
+	+ \frac{D}{r}\big).$$
+\end{theorem}
+
+\begin{proof}
+This is a modification of the proof of Theorem \ref{thm:one}. Define $h_t(x) = \lt(x) + (\tildegt - \glt(x))^\intercal x$. Then $\norm{\nabla h_t(x_t)} \leq dG$. Hence from Lemma \ref{lem:OGD} for any sequence $\{\xst\}_{t=1}^T$,
+
+$$\sumt h_t(x_t) - h_t(\xst) \leq Regret_T^d.$$
+
+Then we use $\norm{\tildegt - \glt(x_t)} \leq \frac{\sqrt{d} L \delta}{2}$. Apply Lemma \ref{lem:2} and plug in our parameters and this gives us the result.
+
+\end{proof}
+
