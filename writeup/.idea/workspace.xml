@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="1b103780-fc7e-4491-840a-2150d6e18f58" name="Default Changelist" comment="commt">
+      <change afterPath="$PROJECT_DIR$/alg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/experimentCode.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alg-theory.tex" beforeDir="false" afterPath="$PROJECT_DIR$/alg-theory.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/intro.tex" beforeDir="false" afterPath="$PROJECT_DIR$/intro.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.aux" beforeDir="false" afterPath="$PROJECT_DIR$/main.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.bbl" beforeDir="false" afterPath="$PROJECT_DIR$/main.bbl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.log" beforeDir="false" afterPath="$PROJECT_DIR$/main.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/main.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.pdfsync" beforeDir="false" afterPath="$PROJECT_DIR$/main.pdfsync" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/main.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pfLem.tex" beforeDir="false" afterPath="$PROJECT_DIR$/pfLem.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/theory.tex" beforeDir="false" afterPath="$PROJECT_DIR$/theory.tex" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JupyterTrust" id="c210e935-6fc2-4188-9f83-cfadd3c2156e" />
+  <component name="ProjectId" id="1fIldw00L5F99CmJumr3dgWMkH6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="1b103780-fc7e-4491-840a-2150d6e18f58" name="Default Changelist" comment="" />
+      <created>1595913580108</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1595913580108</updated>
+      <workItem from="1595913595387" duration="3573000" />
+      <workItem from="1595927889321" duration="3957000" />
+      <workItem from="1596097528196" duration="8092000" />
+      <workItem from="1596115086081" duration="44000" />
+      <workItem from="1596559572159" duration="857000" />
+      <workItem from="1596566237856" duration="11276000" />
+      <workItem from="1596651135270" duration="15913000" />
+      <workItem from="1596837975057" duration="3214000" />
+      <workItem from="1597084527627" duration="1195000" />
+      <workItem from="1597167084599" duration="7335000" />
+    </task>
+    <task id="LOCAL-00001" summary="preflight commit">
+      <created>1596114899845</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1596114899845</updated>
+    </task>
+    <task id="LOCAL-00002" summary="commt">
+      <created>1596657693220</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1596657693220</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="preflight commit" />
+    <MESSAGE value="commt" />
+    <option name="LAST_COMMIT_MESSAGE" value="commt" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="225" y="60" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1596102866650">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="225" y="60" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1596102866650" />
+    <state x="449" y="171" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1596566084738">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="449" y="171" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1536.834@0.0.1536.834" timestamp="1596566084738" />
+    <state x="277" y="62" key="SettingsEditor" timestamp="1596838501102">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="277" y="62" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1596838501102" />
+    <state x="442" y="205" key="Vcs.Push.Dialog.v2" timestamp="1596657696172">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="442" y="205" key="Vcs.Push.Dialog.v2/0.0.1536.834@0.0.1536.834" timestamp="1596657696172" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1596114907256" />
+    <state x="762" y="0" width="781" height="840" key="dock-window-1" timestamp="1597186382964">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="762" y="0" width="781" height="840" key="dock-window-1/0.0.1536.834@0.0.1536.834" timestamp="1597186382964" />
+    <state x="762" y="6" width="781" height="834" key="dock-window-2" timestamp="1597117562924">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="762" y="6" width="781" height="834" key="dock-window-2/0.0.1536.834@0.0.1536.834" timestamp="1597117562924" />
+    <state x="762" y="0" width="781" height="840" key="dock-window-3" timestamp="1596756793923">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="762" y="0" width="781" height="840" key="dock-window-3/0.0.1536.834@0.0.1536.834" timestamp="1596756793923" />
+    <state x="478" y="16" width="579" height="801" key="find.popup" timestamp="1597197727509">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="478" y="16" width="579" height="801" key="find.popup/0.0.1536.834@0.0.1536.834" timestamp="1597197727509" />
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup" timestamp="1597167925703">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="431" y="155" width="672" height="678" key="search.everywhere.popup/0.0.1536.834@0.0.1536.834" timestamp="1597167925703" />
+  </component>
+</project>

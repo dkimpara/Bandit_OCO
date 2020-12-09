@@ -1,0 +1,23 @@
+
+\subsection{Fixed Parameter Tractability}\label{subsec:fpt}
+
+Though \dwin~is \tp-complete, what can be done if we
+fix the number of candidates or voters?
+Here we mention that \dwin~is fixed parameter tractable
+in the number of editing operations, the number of
+candidates
+and the number of voters \citep{bartholdiVoting}.
+First, for a fixed constant $m = \norm{C}$, there is a
+FPT algorithm that is exponential in the fixed constant $m$:
+
+\begin{proposition}{\citep{bartholdiVoting}}
+    Let $m \in \mathbb{N}^+$.
+    There exists a polynomial time algorithm $A_m$ that
+    computes all Dodgson scores (and thus all Dodgson Winners)
+    in Dodgson elections having at most $m$ candidates.
+\end{proposition}
+
+The above result uses integer linear programming while the results
+showing fixed parameter tractability in the number of
+editing operations utilize dynamic programming.
+

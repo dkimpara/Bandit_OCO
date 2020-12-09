@@ -1,0 +1,200 @@
+\section{Practical Greedy Algorithm}\label{subsec:greedy}
+In this section we present the \gwin~algorithm by \citet{heuristic}
+which runs in polynomial time and is self-knowingly
+correct with high probability when the number of
+voters is superquadratic in the number of candidates.
+This probability is over a uniform random draw of each
+vote i.e. $m!$ possibilities for each vote.
+
+In real-world settings, this algorithm seems adequate for most elections.
+It is hard to imagine a large election where the number of candidates is
+larger than the square root of the number of voters.
+For instance theoretically
+this algorithm can handle a small town of 2500 with at most about
+50 candidates.
+We will see empirically that the number is more like 8000 voters for a set
+of 50 candidates.
+In the real world though, as the number of voters increases
+the number of candidates does not seem to grow like $\sqrt{n}$ but more so
+some function much slower than that.
+
+While hard problems may not admit efficient deterministic
+algorithms, we can still try to create heuristic
+algorithms which are correct in many cases.
+For example, modern \algprobm{SAT} solvers utilize are a backtracking
+algorithm
+at their core while using
+several heuristics such as variable selection, clause learning,
+and conflict directed backjumping to improve their performance.
+
+Theoretically however, there are results that show that
+no \np-hard problem has a deterministic heuristic algorithm
+whose asymptotic error rate is subexponential \citep{heuristic2012}.
+But an algorithm with a larger than subexponential error rate can
+still be useful.
+For this particular algorithm, \gscore, asymptotically, the algorithm succeeds with
+high probability when the number of candidates, $m$, goes to infinity
+and the number of voters is super-quadratic in $m$.
+
+Success is when the algorithm is self-knowingly correct.
+Intuitively, this means that algorithm will output the value computed along with
+a certificate saying that the output is either definitely (provably) correct or ``maybe''
+correct.
+This is opposed to other algorithms that will output an answer without such
+a certificate of correctness and instead have an overall probability of correctness.
+We first formally define what we mean by self-knowingly correct.
+
+\begin{defn}
+	For sets $S$ and $T$ and function $f: S \rightarrow T$,
+	an algorithm $\mathcal{A}: S \rightarrow T \times
+	\{\text{``definitely''}, \text{``maybe''}\}$ is
+	self-knowingly correct for all $f$ if, for all $s \in S$
+	and $t \in T$ whenever $\mathcal{A}$ on input $s$ outputs
+	$(t, \text{``definitely''})$ it holds that $f(s) = t$.
+\end{defn}
+
+
+
+We now explain how the algorithm works.
+See below for the full pseudocode for the algorithm.
+Our goal is to determine if a particular candidate $c \in C$ is
+a Dodgson winner of the election.
+What \gwin~does is query \gscore~for the scores of every candidate
+and outputs ``definitely'' or ``maybe'' and if $c$ is a Dodgson winner or not.
+\gwin~will output ``definitely'' only if all the \gscore~queries output
+``definitely''.
+
+Now, what \gscore~does is to go through each vote $v \in V$ and looks at
+which candidate is immediately preferred to $c$ (which $d\in C$ such that
+$c \prec d$).
+If $c$ is not yet beating $d$ in terms of how many voters prefer one candidate
+to the other, then \gscore~exchanges $c$ and $d$ in that vote $v$.
+Now if $c$ is a Condorcet winner once \gscore~has gone through all the votes,
+then the algorithm outputs ``definitely'' and $Score(c)$.
+
+Intuitively, a lower bound for the number of exchanges to make $c$ a Condorcet
+winner is the minimum number votes in which a single adjacent exchange takes place
+to make $c$ a winner.
+If the algorithm does all these exchanges and $c$ is a Condorcet winner then
+it is clear that the algorithm does not perform any more exchanges than the
+lower bound.
+The algorithm thus has computed the Dodgson score of $c$.
+
+\begin{theorem} ~
+	\begin{enumerate}
+		\item \gscore~is self-knowingly correct for $Score$.
+		\item \gwin~is self-knowingly correct for \dwin.
+		\item \gscore~and \gwin~both run in polynomial time.
+	\end{enumerate}
+\end{theorem}
+
+We now explain the probability of success of \gscore~and thus \gwin.
+As mentioned above, the \gwin~succeeds with high probability when
+$\norm{V} = n$ is superquadratic in $\norm{C} = m$.
+This is because when the $n$ is large compared to $m$,
+it is more likely that \gscore~will have enough immediately adjacent swap votes
+to make up for the deficit between the candidate in question, $c$, and all
+the other candidates $d$.
+More precisely, for any two candidates $c$ and $d$, in half the ways voter
+$v$ can vote, $c <_v d$.
+But, $c \prec_v d$ in only $1/m$ of the ways.
+Drawing the votes uniformly at random, the number of votes where $c <_v d$ is
+$n/2$ and the number of votes where $c \prec_v d$  is $n/m$.
+Thus the probability of success is high when $n$ is large compared to $m$.
+The probability of success for \gwin~then utilizes the union bound and Chernoff's
+Theorem.
+\input{alg-pseudo.tex}
+\newpage
+\begin{theorem}
+	For each $m,n \in \mathbb{N}^+$, the following hold.
+	Let $C = \{1, \dots, m\}, \norm{V} = n$.
+	\begin{enumerate}
+		\item For each $c \in C$,
+		\[\Pr[\gscore(\dtriple) \neq
+		(Score(\dtriple), \text{``definitely''})] < 2(m-1)
+		e^{\frac{-n}{8m^2}},\]
+		where the probability is taken over
+		drawing uniformly at random an $m$-candidate, $n$-voter
+		Dodgson election (i.e. all $(m!)^n$ Dodgson elections having
+		$m$ candidates and $n$ voters are equally likely to be chosen).
+		\item \[\Pr[ \exists c \in C | \gwin(\dtriple) \neq
+		(\dwin(\dtriple), \text{``definitely''})] <
+		2(m^2-m) e^{\frac{-n}{8m^2}},\]
+		where the probability is taken over
+		drawing uniformly at random an $m$-candidate, $n$-voter
+		Dodgson election.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	First we need to establish under what conditions \gscore~is
+	self-knowingly correct.
+	\begin{claim}
+		For each $c \in C$, if for all $d \in C \setminus \{c\}$ it holds
+	that
+
+	\begin{align}
+	    \norm{\{i \in [n] | c <_{v_i} d\}} &\leq \frac{2mn+n}{4m}, \text{ and}
+		\label{c11}\\
+	    \norm{\{i \in [n] | c \prec_{v_i} d\}} &\geq \frac{3n}{4m}
+		\label{c12}
+	\end{align}
+	then $\gscore(\dtriple) = (Score(\dtriple), \text{``definitely''})$.
+
+	\end{claim}
+	\begin{claimproof}
+		$\frac{2mn+n}{4m} = \frac{n}{2} + \frac{n}{4m}$ so if (\ref{c11})
+		holds then either $c$ beats $d$ and we are done. Otherwise,
+		$d$ beats $c$ and flipping
+		$\frac{n}{4m}$ votes where $c \prec d$ to $d \prec c$
+		would ensure that $c$ beats $d$.
+		If (\ref{c12}) holds then there are strictly more than
+		$\frac{n}{4m}$ flippable votes so \gscore~will be able to make enough
+		swaps to ensure that $c$ beats $d$.
+	\end{claimproof}
+
+	Now we need to show what is the probability that these conditions
+	are not met given a possible pair $c,d \in C, c\neq d$.
+	We will later use the union bound to present the probability of failure of
+	the algorithm overall.
+	\begin{claim}
+		For each $c,d \in C$ such that $ c\neq d$,
+		\[\Pr[(\norm{\{i \in [n] | c <_{v_i} d\}} >
+		\frac{2mn+n}{4m}) \vee
+		(\norm{\{i \in [n] | c \prec_{v_i} d\}} < \frac{3n}{4m})] <
+		2 e^{\frac{-n}{8m^2}}.\]
+
+		Where the probability is taken over
+		drawing uniformly at random an $m$-candidate, $n$-voter
+		Dodgson election.
+	\end{claim}
+	\begin{pfsketch}
+		Use the Chernoff theorem to show that
+		\begin{align}
+		\Pr[\norm{\{i \in [n] | c <_{v_i} d\}} &>
+		\frac{2mn+n}{4m}] < e^{\frac{-n}{8m^2}} \text{ and} \\
+		\Pr[\norm{\{i \in [n] | c \prec_{v_i} d\}} &< \frac{3n}{4m}] <
+		e^{\frac{-n}{8m^2}}
+		\end{align}
+		by creating random variables $X_i$ for the events $c <_{v_i} d$
+		and $c \prec_{v_i} d$ and adjusting their values to utilize the
+		theorem appropriately.
+		Then use the union bound to prove Claim 2.
+	\end{pfsketch}
+
+	Now we can prove the main statements of the theorem.
+	Item 1 follows from applying the union bound to claim 2:
+
+	\[\bigvee_{d \in C \setminus \{c\}}\Pr[(\norm{\{i \in [n] | c <_{v_i} d\}} >
+		\frac{2mn+n}{4m}) \vee
+		(\norm{\{i \in [n] | c \prec_{v_i} d\}} < \frac{3n}{4m})].\]
+
+	Item 2, follows similarly using the union bound:
+
+	\[\bigvee_{c,d \in C ~ s.t. ~ c \neq d}\Pr[(\norm{\{i \in [n] | c <_{v_i} d\}} >
+		\frac{2mn+n}{4m}) \vee
+		(\norm{\{i \in [n] | c \prec_{v_i} d\}} < \frac{3n}{4m})].\]
+
+	Note that $\norm{\{c,d \in C ~ s.t. ~ c \neq d\}} = (m^2-m)$.
+\end{proof}
+

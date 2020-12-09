@@ -9,18 +9,13 @@ def gradient_descent(loss_seq, projection, alpha):
     tracking_error = []
     regret = []
 
-    loss = loss_seq[0]
     x_t = np.ones(loss.d)
 
-    tracking_error.append(loss.tracking_error(x_t))
-    regret.append(loss.regret(x_t))
-
-    for loss in loss_seq[1:]:
-        x_t = x_t - alpha * loss.gradient(x_t)
-        x_t = projection(x_t)
-
+    for loss in loss_seq:
         tracking_error.append(loss.tracking_error(x_t))
         regret.append(loss.regret(x_t))
+        x_t = x_t - alpha * loss.gradient(x_t)
+        x_t = projection(x_t)
 
     return tracking_error, regret
 
@@ -29,32 +24,33 @@ def bandit_descent(loss_seq, projection, alpha, delta, xi):
     tracking_error = []
     regret = []
 
-    loss = loss_seq[0]
-    x_t = np.ones(loss.d)
+    x_t = np.ones(loss.d)  # init play
 
-    tracking_error.append(loss.tracking_error(x_t))
-    regret.append(loss.regret(x_t))
-
-    for loss in loss_seq[1:]:
-        x_t = x_t - alpha * d1_point_gradient(x_t, delta, loss)
-        x_t = projection(x_t, xi)  # project onto set scaled by xi
-
+    for loss in loss_seq:
         tracking_error.append(loss.tracking_error(x_t))
-        regret.append(loss.regret(x_t))
+        gradient, d1_loss = d1_point_gradient_loss(x_t, delta, loss)
+        regret.append(d1_loss - loss.evaluate(loss.xstar))
+
+        x_t = x_t - alpha * gradient
+        x_t = projection(x_t, xi)  # project onto set scaled by xi
 
     return tracking_error, regret
 
 
-def d1_point_gradient(x_t, delta, loss):
+def d1_point_gradient_loss(x_t, delta, loss):
     d = loss.d
 
     g = np.zeros(d)
+    reg_query = 0
+
     lxt = loss.evaluate(x_t)
     for i in range(d):
         e_i = np.zeros(d)
         e_i[i] = 1.0
-        g += (loss.evaluate(x_t + delta * e_i) - lxt) * e_i
-    return 1 / delta * g
+        point_loss = loss.evaluate(x_t + delta * e_i)
+        reg_query += point_loss
+        g += (point_loss - lxt) * e_i
+    return 1 / delta * g, 1 / (d+1) * (reg_query + lxt)
 
 
 def k_point_gradient(x_t, delta, d, loss):

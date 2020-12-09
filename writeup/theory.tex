@@ -1,0 +1,69 @@
+\section{Projected Gradient Descent with $k$ queries per round}
+We now present that main result, generic for $k$ query feedback.
+
+\begin{lemma} \label{lem:OGD}
+	
+\end{lemma}
+
+\begin{lemma} \label{lem:2}
+	For any point $x \in \K$,
+	
+	$$\frac{1}{k} \sumk \lt(y_{t,i}) - \ell_t(x) \leq  \lt(x_t) -  \lt((1-\xi)x) + G\delta + GD\xi.$$
+	
+\end{lemma}
+ 
+\begin{proof}
+	By assumption of Lipschitz continuity,
+	
+	$$\lt(y_{t,i}) \leq \lt(x) + G \delta.$$
+	
+	
+	
+	
+\end{proof}
+
+
+\begin{theorem}
+	Assume that the assumptions hold. Suppose on round $t$ the algorithm plays $k$ random queries $y_{t,1}, ..., y_{t,k}$, constructs a gradient estimator $\tilde{g}_t$ and uses the the algorithmic step $x_{t+1} = \proj[(1-\xi)\K]{(x_t - \eta \tilde{g}_t)}$ with $1/\eta \geq L$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$. If the gradient estimator satisfies the following conditions for all $t \geq 1$:
+	
+	\begin{enumerate}
+		\item $\norm{x_t - y_{t,i}} \leq \delta \text{ for } i = 1, ... k$.
+		\item $\norm{\tildegt} \leq G_1$ for some constant $G_1$.
+		\item $\norm{\E_t \tildegt - \glt(x_t)} \leq c\delta$ for some constant $c$. 
+		 
+	\end{enumerate}
+	Then for any sequence $\{\xst\}_{t=1}^{T} \in \K^T$ we have
+	
+	$$\E \frac{1}{k} \sumt \sumk \lt(y_{t,i}) - \E \sumt \min_{\xst\in \K}\ell_t(\xst) \leq G_1 K_1 \sum_{t=2}^T \norm{\xst - x_{t-1}^*} + G_1 K_2 + G_1 \log(T)\big(1 + 2c + \frac{D}{r}\big).$$
+	
+	where the constants $K_1$ and $K_2$ are explicitly given by
+	
+	$$K_1 := \frac{\norm{x_1 - x_1^*} - \rho \norm{x_T - x_T^*}}{(1-\rho)}, ~~ K_2 := \frac{1}{1-\rho}.$$
+	
+	Where $0 \leq \rho := (1-\eta\mu) ^ {1/2} < 0$. Is our linear convergence constant.
+	
+
+\end{theorem}
+
+\begin{proof}
+	Start by defining $h_t(x) = \lt(x) + (\tildegt - \glt(x))^\intercal x$. Then $h_t$ has the same convexity properties as $\lt$. Note also that $\nabla h_t(x_t) = \tildegt$. So the algorithm is actually performing gradient descent, as if with full information) on the functions $h_t$ restricted to $(1-\xi) \K$. Using the regret bound from Lemma \ref{lem:OGD} we have that
+	$$\E \sumt \frac{1}{k} \sumk \lt(y_{t,i}) - \E \sumt \lt(\xst) \leq G_1 K_1 \sum_{t=2}^T \norm{\xst - x_{t-1}^*} + G_1 K_2 := Regret_{T}^D(OGD).$$
+	
+	Then taking expectations, 
+	
+	\begin{align*}
+		\E \sumt [\lt(x_t) - \lt(\xst)] &= \E \sumt [h_t(x_t) - h_t(\xst)] + \E \sumt[\lt(x_t) - h_t(x_t) - \lt(\xst) + h_t(\xst)] \\
+		&\leq Regret_{T}^D(OGD) + \E \sumt (\E_t \tildegt - \glt(x_t))^\intercal(x_t - \xst)\\
+		& \leq Regret_{T}^D(OGD) + 2c\delta DT.
+	\end{align*}
+	
+	Where the first inequality is by the convexity of $\ell_t$ and $h_t$. Now we use Lemma \ref{lem:2} and obtain
+	
+	$$\E \frac{1}{k} \sumt \sumk \lt(y_{t,i}) - \E \sumt \min_{\xst\in \K}\ell_t(\xst) \leq Regret_{T}^D(OGD) + 2c\delta DT + TG\delta + GDT\xi.$$
+	
+	To finish the proof, plug in the values for $\delta$ and $\xi$.
+	
+\end{proof}
+
+
+

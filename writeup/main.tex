@@ -1,0 +1,120 @@
+\documentclass{article}
+\usepackage{pdfsync}
+\usepackage{fullpage}
+\usepackage{natbib}
+
+
+% custom %
+\usepackage{amsmath,amsthm,amssymb,xspace,amsfonts}
+\usepackage{mathtools}
+\usepackage{xcolor}
+\usepackage[]{algorithm}
+\usepackage{fancyhdr}
+\usepackage{bbm}
+\usepackage{enumitem}
+\usepackage{graphicx, subfig}
+\usepackage{caption}
+
+\usepackage{cleveref}
+\usepackage{thm-restate}
+\usepackage{listings, pdfpages}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode}
+\usepackage{subfiles}
+
+\newcommand{\vect}{\mathbf}
+\newcommand{\cc}[1]{\ensuremath{\mathsf{#1}}}
+\newcommand{\algprobm}[1]{{\sc #1}\xspace}
+
+\newcommand{\E}{\mathbb{E}}
+
+\newcommand{\K}{\mathcal{K}}
+\newcommand{\lt}{\ell_t}
+\newcommand{\glt}{\nabla \ell_t}
+\newcommand{\sumt}{\sum_{t=1}^T}
+\newcommand{\sumk}{\sum_{i=1}^k}
+
+\newcommand{\xs}{x^*}
+\newcommand{\xst}{x^*_t}
+
+
+\newcommand{\tildegt}{\tilde{g}_t}
+\newcommand{\proj}[2][]{\textit{proj}_{{#1}}{#2}}
+
+
+\newcommand\tab[1][0.5cm]{\hspace*{#1}}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+
+\newtheorem*{problem}{Decision Problem}
+
+\newenvironment{claimproof}[1]{\par\noindent\underline{Proof:}\space#1}
+
+\newenvironment{pfsketch}[1]{\par\noindent\underline{Proof sketch:}\space#1}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Swap the definition of \abs* and \norm*, so that \abs
+% and \norm resizes the size of the brackets, and the 
+% starred version does not.
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+
+
+\newlength\myindent
+\setlength\myindent{2em}
+\newcommand\bindent{%
+	\begingroup
+	\setlength{\itemindent}{\myindent}
+	\addtolength{\algorithmicindent}{\myindent}
+}
+\newcommand\eindent{\endgroup}
+
+
+\algrenewcommand{\algorithmiccomment}[1]{\hskip3em$\vartriangleright$ #1}
+
+\newcommand{\dk}[1]{\textcolor{red}{[DK: #1]}}
+\begin{document}
+
+\title{Regret Bounds for Online Gradient Descent with $d+1$ point Bandit Feedback}
+ \author{Dhamma Kimpara}
+
+\maketitle
+
+
+\input{intro.tex}
+\input{prelims.tex}
+\input{theory.tex}
+
+\newpage
+
+\bibliographystyle{plainnat}
+\bibliography{bib}
+
+\newpage
+
+\appendix
+
+\input{appendix.tex}
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
