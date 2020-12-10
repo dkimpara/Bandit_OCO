@@ -1,36 +1,32 @@
+\newpage 
 \section{Experiments}
 
-In this section we present empirical results based on our
-implementation the ~ algorithm from the previous section (see appendix for
-the python code).
-As proved in the previous section, the algorithm should succeed with high
-probability when $n \sim \Omega(m^2)$ so we tested values for $n$ ranging between
-$n = m^{1.5}$ to $m^{2.5}$ for each $m$ between 5 and 50.
-For $m \in [50,100]$ we ran experiments for $n = m^{2.1}$ to $m^{2.5}$
-Note that the experimental values for $m$ were not evenly spaced apart.
-Each pair of $n,m$ was run for 100 trials, each trial consisting of generating
-an election uniformly at random, picking a random candidate to test, and running ~ on that
-instance.
-A success was when returned ``definitely'', as in it was self-knowingly correct.
+In this section we present experimental data on the performance of Algorithm \ref{alg}. We also compare its performance to an algorithm that uses the full gradient information.
 
-At 100 candidates, the 100 trials took 9 hours, while at 5 candidates, the trials
-took about 3 minutes.
+We consider a time-varying least-squares problem of the form:
+
+$$\min_{x\in \mathcal{B}} \frac{1}{2} \norm{Ax-b_t}^2$$
+
+where $\mathcal{B}$ is the unit ball, $A \in \mathbb{R}^{n \times d}$ is a given regression matrix, and $b_t$ is a time-varying vector. We now outline how the loss functions $\lt = \frac{1}{2} \norm{Ax-b_t}^2$ are generated.
+
+We generate $A$ by defining its singular value decomposition: for its left and right-singular vectors, sample two orthogonal matrices $U \in \mathbb{R}^{n \times n}$ and $V \in \mathbb{R}^{d \times d}$. Then we let the singular values be equally spaced from $1/\sqrt{\kappa}$ to $1$. We consider $\kappa = 100$. 
+
+We generate $b_t$ with
+$$b_t = A \xst+ w_t$$
+
+where $\xst$ is generated using a random walk with step size of $1$ ($\norm{\xst - x_{t-1}^*} = 1 ~~ \forall t$) and $w_t$ is a zero-mean Gaussian vector with covariance matrix $10^{-3}I_n$. Hence $\sumt \norm{\xst - x_{t-1}^*} = T$.
+
+Clearly the $\lt$'s are $\mu$-strongly convex and $L$-smooth with $\mu = 1/\sqrt{\kappa}$ and $L \leq \norm{A} = 1$. We also have that $\lt$ is $G$-Lipschitz with $G = 6 \norm{A^\intercal A}^2 = 6$. 
 
 
 \begin{figure}[hbt!]\centering
     \subfloat{
-    \includegraphics[width=0.45\linewidth]{gwinNoErr.png}}\hfill
-    \subfloat{
-    \includegraphics[width=0.45\linewidth]{view2.png}}
-    \caption{3D line plot showing the success probability of the
-    ~algorithm. Each line color corresponds to a particular
-    number of candidates. 100 trials were run for each pair of $n,m$.
-    Error bars were omitted to not clutter the graph. For reference they
-    are at most $ 0.08$.}
+    \includegraphics[width=0.45\linewidth]{fig1.png}}\hfill
+	\subfloat{
+	\includegraphics[width=0.45\linewidth]{fig2.png}}
+    \caption{Plot showing the regret of Algorithm \ref{alg} and the full-information OGD along with bounds for both. Note that both the bounds diverge almost immediately.}
     \label{fig:exp}
 \end{figure}
-
-Figure \ref{fig:exp} 
 
 
 
