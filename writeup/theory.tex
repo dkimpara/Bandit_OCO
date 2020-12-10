@@ -51,7 +51,7 @@ We now present the main result. But first, we need two Lemmas the first is the d
 
 
 \begin{theorem} \label{thm:one}
-	Assume that the assumptions hold. Suppose on round $t$ the algorithm plays $k$ random queries $y_{t,1}, ..., y_{t,k}$, constructs a gradient estimator $\tilde{g}_t = g(y_{t,1}, ..., y_{t,k})$ and uses the the algorithmic step $x_{t+1} = \proj[(1-\xi)\K]{(x_t - \eta \tilde{g}_t)}$ with $\eta \leq \frac{1}{2G_1}$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$. If the gradient estimator satisfies the following conditions for all $t \geq 1$:
+	Suppose the assumptions in the preliminaries hold. Suppose on round $t$ the algorithm plays $k$ random queries $y_{t,1}, ..., y_{t,k}$, constructs a gradient estimator $\tilde{g}_t = g(y_{t,1}, ..., y_{t,k})$ and uses the the algorithmic step $x_{t+1} = \proj[(1-\xi)\K]{(x_t - \eta \tilde{g}_t)}$ with $\eta \leq \frac{1}{2G_1}$, $\delta = \frac{\log(T)}{T}$, and $\xi = \frac{\delta}{r}$. If the gradient estimator satisfies the following conditions for all $t \geq 1$:
 	
 	\begin{enumerate}
 		\item $\norm{x_t - y_{t,i}} \leq \delta \text{ for } i = 1, ... k$.
